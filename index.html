@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="theme-color" content="#12101c">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="基娜幸存者">
+<title>基娜幸存者</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+
+  <!-- 顶部状态 -->
+  <div id="hud">
+    <div class="xpbar"><i id="xpFill"></i><span id="lvText">Lv.1</span></div>
+    <div class="row">
+      <span id="timeText">00:00</span>
+      <span id="killText">击杀 0</span>
+      <button id="btnChart" type="button" title="图鉴">📖</button>
+      <button id="btnPause" type="button" title="暂停">⏸</button>
+      <button id="btnSound" type="button" title="音效">🔊</button>
+    </div>
+    <div class="hpbar"><i id="hpFill"></i><span id="hpText">100 / 100</span></div>
+    <div id="bossbar" hidden>
+      <div class="bname">BOSS</div>
+      <div class="bbar"><i id="bossFill"></i></div>
+    </div>
+  </div>
+
+  <!-- 游戏区 -->
+  <canvas id="cv"></canvas>
+
+  <!-- 摇杆提示 -->
+  <div id="stickHint">按住屏幕拖动移动</div>
+
+  <!-- 联动解锁提示 -->
+  <div id="toast"></div>
+
+  <!-- 升级三选一 -->
+  <div id="levelup">
+    <div class="panel">
+      <h2>升级！<span id="lvUpNum">Lv.2</span></h2>
+      <p class="sub">选一个强化</p>
+      <div id="cards"></div>
+    </div>
+  </div>
+
+  <!-- 暂停 -->
+  <div id="pauseModal">
+    <div class="panel">
+      <h2>已暂停</h2>
+      <p class="sub" id="pauseSub">00:00　击杀 0</p>
+      <button id="btnResume" class="primary" type="button">继续游戏</button>
+      <button id="btnRestart2" class="ghost" type="button">重新开始</button>
+    </div>
+  </div>
+
+  <!-- 图鉴：升级 + 联动 -->
+  <div id="chartModal">
+    <div class="panel wide">
+      <h2>图鉴</h2>
+      <div id="chartBody"></div>
+      <button id="chartClose" class="primary" type="button">关闭</button>
+    </div>
+  </div>
+
+  <!-- 开始 / 结算 -->
+  <div id="overlay" class="show">
+    <div class="panel">
+      <h1 id="ovTitle">基娜幸存者</h1>
+      <p class="sub" id="ovSub">活满 9 分钟就算赢</p>
+      <div class="stats" id="ovStats" hidden>
+        <div class="row"><span>存活时间</span><strong id="stTime">00:00</strong></div>
+        <div class="row"><span>击杀</span><strong id="stKills">0</strong></div>
+        <div class="row"><span>最高纪录</span><strong id="stBest">00:00</strong></div>
+      </div>
+      <button id="ovBtn" class="primary" type="button">开始游戏</button>
+      <p class="hint">按住屏幕拖动来移动（底部中间的摇杆会跟着动）<br>角色会自动攻击屏幕内的敌人<br>电脑：WASD / 方向键</p>
+    </div>
+  </div>
+
+</div>
+<script src="game.js"></script>
+</body>
+</html>
